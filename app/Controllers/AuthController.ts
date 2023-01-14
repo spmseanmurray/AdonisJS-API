@@ -5,7 +5,11 @@ import User from 'App/Models/User'
 export default class AuthController {
   public async register({ request, auth }: HttpContextContract) {
     const registerSchema = schema.create({
-      email: schema.string([rules.email(), rules.trim()]),
+      email: schema.string([
+        rules.email(),
+        rules.trim(),
+        rules.unique({ table: 'users', column: 'email', caseInsensitive: true }),
+      ]),
       password: schema.string([rules.minLength(8)]),
       firstName: schema.string([rules.trim()]),
       lastName: schema.string([rules.trim()]),
@@ -25,5 +29,9 @@ export default class AuthController {
     } catch {
       response.badRequest({ error: 'Invalid login credentials' })
     }
+  }
+
+  public async logout({ auth }: HttpContextContract) {
+    await auth.logout()
   }
 }
