@@ -35,7 +35,7 @@
     "bracketSpacing": true,
     "arrowParens": "always",
     "printWidth": 100,
-    "endOfLine": "crlf"
+    "endOfLine": "auto"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.9.5",
