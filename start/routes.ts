@@ -14,7 +14,7 @@ Route.group(() => {
   Route.get('/', 'UsersController.index')
   Route.get('/:id', 'UsersController.show')
   Route.post('/:id', 'UsersController.update')
-  Route.delete('/:id', 'UsersController.delete')
+  Route.delete('/:id', 'UsersController.destroy')
 })
   .prefix('users')
   .middleware(['auth', 'role:admin'])
