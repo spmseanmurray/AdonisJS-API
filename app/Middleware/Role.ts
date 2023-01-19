@@ -10,7 +10,7 @@ export default class Role {
     const roleIds = guards.map((guard) => Roles[guard.toUpperCase()])
 
     if (!roleIds.includes(auth.user?.roleId)) {
-      response.unauthorized({
+      return response.unauthorized({
         error: `Role requirements not met. Must include ${guards.join('/')}`,
       })
     }
